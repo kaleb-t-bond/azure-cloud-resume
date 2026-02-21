@@ -29,7 +29,7 @@ resource "azurerm_resource_group" "resume_rg" {
 resource "azurerm_storage_account" "resume_storage" {
     # CRITICAL - "name" must be unique.
     # Azure Storage names share a global DNS namespace across the world
-    name = "kalebtb9495cloudresume2026"
+    name = "kalebtbcloudresume2026"
     resource_group_name = azurerm_resource_group.resume_rg.name
     location = azurerm_resource_group.resume_rg.location
     # "Standard" tier tells Azure to use HDDs instead of SSDs
@@ -60,6 +60,6 @@ resource "azurerm_storage_account_static_website" "resume_website" {
 
 # Output the URL
 output "website_url" {
-    value = azurerm_storage_account_static_website.resume_website.endpoint
+    value = azurerm_storage_account.resume_storage.primary_web_endpoint
 }
 
