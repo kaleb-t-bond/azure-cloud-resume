@@ -1,11 +1,233 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kaleb Bond - Cloud Resume</title>
+    <style>
+        :root {
+            --primary-color: #004d99;
+            --secondary-color: #f4f7f6;
+            --text-color: #333;
+            --text-light: #666;
+            --border-color: #ddd;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 40px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 2.5em;
+        }
+
+        .contact-info {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .contact-info li a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-info li a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            margin-bottom: 5px;
+            color: #222;
+        }
+
+        .subtitle {
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .cert-link {
+            font-size: 0.9em;
+            word-break: break-all;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 10px;
+                padding: 20px;
+            }
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Kaleb Bond</h1>
-    <h2>Cloud Engineer</h2>
-    <p>This infrastructure was successfully deployed to Azure using Terraform!</p>
+
+<div class="container">
+    <header>
+        <h1>Kaleb Thomas Bond</h1>
+        <ul class="contact-info">
+            <li>Salt Lake City, Utah, 84121</li>
+            <li>801-696-2088</li>
+            <li><a href="mailto:kaleb.t.bond@gmail.com">kaleb.t.bond@gmail.com</a></li>
+            <li><a href="https://www.linkedin.com/in/kaleb-t-bond/" target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com/kaleb-t-bond" target="_blank">GitHub</a></li>
+        </ul>
+    </header>
+
+    <main>
+        <section id="summary">
+            <h2>Professional Summary</h2>
+            <p>Detail-oriented Computer Science graduate with practical experience in systems and back-end development. Proven ability to build and test applications using Java, C++, and Linux environments from coursework. Seeking to leverage technical skills in A/V troubleshooting, hardware troubleshooting, resource management, and a passion for problem-solving to transition into an IT role.</p>
+        </section>
+
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div>
+                    <strong>Languages:</strong> Java, C++, SQL, Python, HTML, CSS, JavaScript<br><br>
+                    <strong>Frameworks & Libraries:</strong> Spring Boot, Spring Framework, Spring Data JPA<br><br>
+                    <strong>Systems & Infrastructure:</strong> Linux (Shell & Admin Concepts), Virtualization
+                </div>
+                <div>
+                    <strong>Developer Tools:</strong> Git, IntelliJ IDEA, Visual Studio, MySQL Workbench<br><br>
+                    <strong>Core Concepts:</strong> Object-Oriented Programming (OOP), Data Structures, Algorithms, REST APIs, Unit Testing, Agile Methodologies
+                </div>
+            </div>
+        </section>
+
+        <section id="certifications">
+            <h2>Certifications</h2>
+            <ul>
+                <li>
+                    <strong>LPI Essentials Certification</strong> - Linux Professional Institute (Sep 2025)<br>
+                    <a href="https://cs.lpi.org/caf/Xamman/certification/verify/LPI000669343/aeaf52yhuh" target="_blank" class="cert-link">Verify Credential</a>
+                </li>
+                <li>
+                    <strong>WGU Certificate: Back-End Developer</strong> - Western Governors University (Nov 2025)<br>
+                    <a href="https://badges.parchment.com/public/assertions/gFUfAXrfR3OsPpj76jj0Tg" target="_blank" class="cert-link">Verify Credential</a>
+                </li>
+                <li>
+                    <strong>WGU Certificate: Java Developer</strong> - Western Governors University (Dec 2025)<br>
+                    <a href="https://badges.parchment.com/public/assertions/p44STDEYTw2um4deSTECLA?identity__email=kbon108%40wgu.edu" target="_blank" class="cert-link">Verify Credential</a>
+                </li>
+                <li>
+                    <strong>WGU Certificate: AI Optimization Developer</strong> - Western Governors University (Jan 2026)<br>
+                    <a href="https://badges.parchment.com/public/assertions/r1A2V4KHRamX_Mz7yy4--Q?identity__email=kbon108%40wgu.edu" target="_blank" class="cert-link">Verify Credential</a>
+                </li>
+            </ul>
+        </section>
+
+        <section id="projects">
+            <h2>Software Development Projects</h2>
+            
+            <h3>Command-Line Student Roster System | C++</h3>
+            <ul>
+                <li>Engineered a C++ command-line application from scratch to parse, manage, and report on a list of student records.</li>
+                <li>Implemented core features for data parsing, roster manipulation (add, remove, print), and data validation for email formats.</li>
+                <li>Wrote functions to perform data aggregation, such as calculating average days in a course and filtering students by degree program.</li>
+            </ul>
+
+            <h3>Back-End REST API for Travel Agency | Java, Spring Boot, MySQL</h3>
+            <ul>
+                <li>Developed a new REST API using Spring Boot to replace a legacy travel agency system and serve an existing Angular front-end.</li>
+                <li>Created Spring Data JPA entities and repositories to map to a MySQL database, enabling persistent data storage.</li>
+                <li>Designed and implemented a service layer and REST controller to handle checkout logic and process incoming purchase data.</li>
+            </ul>
+
+            <h3>Full-Stack Inventory Management Application | Java, Spring Framework, HTML</h3>
+            <ul>
+                <li>Customized a full-stack Java Spring application to manage product and part inventory for a retail customer.</li>
+                <li>Implemented new back-end business logic to enforce inventory rules, such as min/max levels with corresponding data validation.</li>
+                <li>Updated the HTML front-end to include new user features (e.g., "Buy Now" button) and wrote new unit tests to validate functionality.</li>
+            </ul>
+        </section>
+
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            
+            <h3>Catering Operations Assistant Manager</h3>
+            <div class="subtitle">SSA, Salt Lake City, UT | August 2022 – Present</div>
+            <ul>
+                <li>Acted as the primary client-facing contact and technical lead for on-site A/V setup, troubleshooting, and client requests to ensure client satisfaction.</li>
+                <li>Coordinated operational logistics for a high-volume portfolio exceeding $1.1M in annual revenue (2025), including inventory monitoring, supply procurement, and cross-departmental communication with culinary staff.</li>
+                <li>Coordinated catering operations for the record-breaking 120th National Western Stock Show (Jan 2026), managing food service logistics during a 16-day event that saw an all-time high of 750,000+ attendees.</li>
+                <li>Maintained high-quality standards for event presentation, client services, and food safety compliance in a fast-paced environment.</li>
+            </ul>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            
+            <h3>Bachelor of Science, Computer Science</h3>
+            <div class="subtitle">Western Governors University (WGU), Salt Lake City, UT | Graduated February 2026</div>
+            <ul>
+                <li><strong>Relevant Coursework:</strong> Data Structures & Algorithms I & II, Back-End Programming, Java Frameworks, Data Management - Applications, Version Control</li>
+                <li><strong>Capstone Project: AI-Driven Predictive Modeling (Challenge Rating Predictor)</strong>
+                    <ul>
+                        <li>Engineered a machine learning tool utilizing a Random Forest Regressor algorithm to predict enemy difficulty ratings for TTRPG systems.</li>
+                        <li>Optimized model performance to achieve a predictive accuracy with a Root Mean Squared Error (RMSE) < 1.0, demonstrating proficiency in data preprocessing and model tuning.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </main>
+</div>
+
 </body>
 </html>
