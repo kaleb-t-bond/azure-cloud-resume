@@ -50,10 +50,12 @@ jobs:
           # "/" means the root of the repository.
           app_location: "/"
 
-          # api_location: the folder containing your Azure Function code.
-          # Azure SWA reads this directory, installs requirements.txt, and deploys
-          # the function as the managed API backend automatically.
-          api_location: "api"
+          # api_location: intentionally omitted.
+          # The full Azure Functions + Cosmos DB backend is built in Terraform (main.tf)
+          # and the api/ folder, but the Azure free-trial subscription blocks serverless
+          # compute quota, preventing managed function deployment. The view counter uses
+          # counterapi.dev as a live fallback. Set api_location: "api" and re-deploy
+          # once the subscription is upgraded to Pay-As-You-Go.
 
           # output_location: the folder to serve AFTER a build step (e.g., 'npm run build').
           # We have no build step — index.html is already production-ready — so this is empty.

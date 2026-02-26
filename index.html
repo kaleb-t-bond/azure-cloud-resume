@@ -255,12 +255,15 @@
 </div>
 
 <script>
-    // On every page load, call the Azure Function to increment and retrieve the view count.
-    // The function hits Cosmos DB, increments the counter, and returns the new value as JSON.
+    // On every page load, increment and retrieve the view count.
+    // counterapi.dev is a free hosted counter service — no server required.
+    // The intended architecture (Azure Functions + Cosmos DB) is fully built in Terraform
+    // and the api/ folder, but Azure free-trial subscriptions block serverless compute
+    // quota, so counterapi.dev serves as the live fallback.
     async function fetchViewCount() {
-        // The Azure Static Web App URL — Terraform output 'swa_url' + /api/view-counter.
-        // SWA automatically routes requests to /api/* to the managed Azure Function backend.
-        const FUNCTION_URL = "https://kind-mud-046b32d0f.2.azurestaticapps.net/api/view-counter";
+        // GET /up increments the counter by 1 and returns the new total.
+        // Namespace "kaleb-cloud-resume" is unique to this project.
+        const FUNCTION_URL = "https://api.counterapi.dev/v1/kaleb-cloud-resume/views/up";
         const countEl = document.getElementById("view-count");
 
         try {
