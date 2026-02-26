@@ -1,8 +1,4 @@
 {
   "name": "resume-api",
-  "version": "1.0.0",
-  "description": "Azure Functions API for resume view counter",
-  "dependencies": {
-    "@azure/cosmos": "^4.1.0"
-  }
+  "version": "1.0.0"
 }

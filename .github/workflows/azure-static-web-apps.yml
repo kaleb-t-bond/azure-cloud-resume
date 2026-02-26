@@ -59,7 +59,3 @@ jobs:
           # We have no build step — index.html is already production-ready — so this is empty.
           output_location: ""
 
-          # Tell Oryx (Azure's build system) which language and version our API uses.
-          # Node.js is the primary supported language for SWA managed functions.
-          api_language: node
-          api_runtime_version: "18"
