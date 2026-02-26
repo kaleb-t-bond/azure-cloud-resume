@@ -58,3 +58,8 @@ jobs:
           # output_location: the folder to serve AFTER a build step (e.g., 'npm run build').
           # We have no build step — index.html is already production-ready — so this is empty.
           output_location: ""
+
+          # Tell Oryx (Azure's build system) which language and version our API uses.
+          # Without this, Oryx may guess incorrectly or use the wrong defaults.
+          api_language: python
+          api_runtime_version: "3.11"
