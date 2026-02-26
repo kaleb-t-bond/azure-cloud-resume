@@ -60,6 +60,6 @@ jobs:
           output_location: ""
 
           # Tell Oryx (Azure's build system) which language and version our API uses.
-          # Without this, Oryx may guess incorrectly or use the wrong defaults.
-          api_language: python
-          api_runtime_version: "3.11"
+          # Node.js is the primary supported language for SWA managed functions.
+          api_language: node
+          api_runtime_version: "18"
