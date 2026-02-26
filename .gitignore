@@ -12,3 +12,18 @@ crash.*.log
 # Ignore OS generated files
 .DS_Store
 Thumbs.db
+
+# Azure Functions — local development files
+# local.settings.json holds the Cosmos DB connection string for local testing
+# and must NEVER be committed (it contains credentials)
+api/local.settings.json
+api/__pycache__/
+api/.python_packages/
+.venv/
+*.pyc
+*.pyo
+.funcignore
+
+# Terraform variable files (may contain secrets)
+*.tfvars
+*.tfvars.json

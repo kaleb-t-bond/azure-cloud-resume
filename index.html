@@ -114,6 +114,20 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        .view-counter {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--text-light);
+        }
+
+        .view-counter span {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
     </style>
 </head>
 <body>
@@ -234,7 +248,35 @@
             </ul>
         </section>
     </main>
+
+    <footer class="view-counter">
+        <p>Page Views: <span id="view-count">...</span></p>
+    </footer>
 </div>
 
+<script>
+    // On every page load, call the Azure Function to increment and retrieve the view count.
+    // The function hits Cosmos DB, increments the counter, and returns the new value as JSON.
+    async function fetchViewCount() {
+        // The Azure Static Web App URL — Terraform output 'swa_url' + /api/view-counter.
+        // SWA automatically routes requests to /api/* to the managed Azure Function backend.
+        const FUNCTION_URL = "https://kind-mud-046b32d0f.2.azurestaticapps.net/api/view-counter";
+        const countEl = document.getElementById("view-count");
+
+        try {
+            const response = await fetch(FUNCTION_URL);
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            const data = await response.json();
+            // toLocaleString() formats large numbers with commas (e.g. 1,042)
+            countEl.textContent = data.count.toLocaleString();
+        } catch (err) {
+            // Silently degrade — a cold start timeout or outage should never break the page
+            console.error("View counter error:", err);
+            countEl.textContent = "—";
+        }
+    }
+
+    fetchViewCount();
+</script>
 </body>
 </html>

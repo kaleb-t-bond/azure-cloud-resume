@@ -1,0 +1,60 @@
+# GitHub Actions Workflow — Deploy Azure Cloud Resume
+#
+# WHAT IS GITHUB ACTIONS?
+#   GitHub Actions is GitHub's built-in CI/CD (Continuous Integration / Continuous Deployment)
+#   system. A "workflow" is a set of automated steps that run in response to an event —
+#   in this case, every time you push code to the 'main' branch.
+#   This replaces the manual 'az storage blob upload' command from the old workflow.
+#
+# HOW DOES THIS CONNECT TO AZURE?
+#   The 'azure_static_web_apps_api_token' is a secret deployment token that Azure issued
+#   when you created the SWA resource (stored in GitHub via 'gh secret set').
+#   GitHub Actions uses it to authenticate and push your files to Azure — no passwords needed.
+
+name: Deploy Azure Cloud Resume
+
+on:
+  push:
+    branches:
+      - main  # Trigger this workflow whenever code is pushed to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # GitHub spins up a fresh Ubuntu VM to run these steps
+    name: Build and Deploy
+
+    steps:
+      # Step 1: Check out the repository code onto the GitHub Actions runner VM
+      - uses: actions/checkout@v4
+
+      # Step 2: Deploy to Azure Static Web Apps
+      # This official Microsoft action handles everything:
+      #   - Uploads index.html (and any other static files) as the website content
+      #   - Uploads the api/ folder and deploys it as the serverless Functions backend
+      #   - Reports the deployment status back to GitHub
+      - name: Deploy to Azure Static Web Apps
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          # The deployment token from Terraform output.
+          # Stored as a GitHub Actions secret so it never appears in plain text here.
+          # You set this once with: gh secret set AZURE_STATIC_WEB_APPS_API_TOKEN --body "$(terraform output -raw swa_deployment_token)"
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+
+          # Automatically provided by GitHub — lets the action post deployment
+          # status updates back to your repository (e.g., on pull requests).
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+
+          action: "upload"
+
+          # app_location: the folder containing your static content (index.html).
+          # "/" means the root of the repository.
+          app_location: "/"
+
+          # api_location: the folder containing your Azure Function code.
+          # Azure SWA reads this directory, installs requirements.txt, and deploys
+          # the function as the managed API backend automatically.
+          api_location: "api"
+
+          # output_location: the folder to serve AFTER a build step (e.g., 'npm run build').
+          # We have no build step — index.html is already production-ready — so this is empty.
+          output_location: ""
