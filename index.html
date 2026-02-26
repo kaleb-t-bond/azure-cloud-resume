@@ -219,11 +219,12 @@
         <section id="projects">
             <h2>Software Development Projects</h2>
             
-            <h3>Cloud-Hosted Resume Infrastructure | Terraform, Azure, PowerShell</h3>
+            <h3>Cloud-Hosted Resume Infrastructure | Terraform, Azure, GitHub Actions</h3>
             <ul>
-                <li>Engineered Infrastructure as Code (IaC) utilizing Terraform to declaratively provision and manage an Azure Storage Account configured for cost-optimized static website hosting.</li>
-                <li>Executed idempotent deployments of frontend HTML artifacts using the Azure CLI and PowerShell, successfully navigating Azure Role-Based Access Control (RBAC).</li>
-                <li>Diagnosed and resolved live DNS resolution mismatches by querying the Azure control plane to synchronize state with deployed data plane assets.</li>
+                <li>Provisioned a multi-service Azure architecture using Terraform IaC — including a Static Web App, Cosmos DB NoSQL account, and serverless Azure Functions API backend — fully version-controlled and deployable via a single <code>terraform apply</code>.</li>
+                <li>Built a GitHub Actions CI/CD pipeline that automatically builds and deploys the resume to Azure Static Web Apps on every push to main, eliminating manual deployment steps.</li>
+                <li>Designed a serverless view counter using Azure Functions (Node.js) and Cosmos DB, applying connection reuse patterns and upsert-based write logic to minimize cold-start latency and cost.</li>
+                <li>Diagnosed a subscription-level compute quota restriction during deployment by systematically isolating the failure to infrastructure rather than code, and implemented a working fallback while documenting the full intended architecture.</li>
             </ul>
 
             <h3>Command-Line Student Roster System | C++</h3>
