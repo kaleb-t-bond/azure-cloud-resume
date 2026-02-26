@@ -50,8 +50,15 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 0;
             margin-top: 10px;
+        }
+
+        /* Pipe separator between every contact item except the first */
+        .contact-info li:not(:first-child)::before {
+            content: "|";
+            margin: 0 12px;
+            color: var(--border-color);
         }
 
         .contact-info li a {
@@ -62,6 +69,22 @@
 
         .contact-info li a:hover {
             text-decoration: underline;
+        }
+
+        /* Title row with date flush-right — used on experience and education entries */
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2px;
+        }
+
+        .entry-date {
+            font-size: 0.85em;
+            color: var(--text-light);
+            font-weight: normal;
+            white-space: nowrap;
+            margin-left: 16px;
         }
 
         section {
@@ -101,8 +124,14 @@
         }
 
         .cert-link {
-            font-size: 0.9em;
-            word-break: break-all;
+            font-size: 0.85em;
+        }
+
+        /* Visual divider between consecutive entries within a section */
+        section ul + h3 {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
         }
 
         @media (max-width: 600px) {
@@ -222,8 +251,11 @@
         <section id="experience">
             <h2>Professional Experience</h2>
             
-            <h3>Catering Operations Assistant Manager</h3>
-            <div class="subtitle">SSA, Salt Lake City, UT | August 2022 – Present</div>
+            <h3 class="entry-header">
+                <span>Catering Operations Assistant Manager</span>
+                <span class="entry-date">August 2022 – Present</span>
+            </h3>
+            <div class="subtitle">SSA, Salt Lake City, UT</div>
             <ul>
                 <li>Acted as the primary client-facing contact and technical lead for on-site A/V setup, troubleshooting, and client requests to ensure client satisfaction.</li>
                 <li>Coordinated operational logistics for a high-volume portfolio exceeding $1.1M in annual revenue (2025), including inventory monitoring, supply procurement, and cross-departmental communication with culinary staff.</li>
@@ -235,8 +267,11 @@
         <section id="education">
             <h2>Education</h2>
             
-            <h3>Bachelor of Science, Computer Science</h3>
-            <div class="subtitle">Western Governors University (WGU), Salt Lake City, UT | Graduated February 2026</div>
+            <h3 class="entry-header">
+                <span>Bachelor of Science, Computer Science</span>
+                <span class="entry-date">Graduated February 2026</span>
+            </h3>
+            <div class="subtitle">Western Governors University (WGU), Salt Lake City, UT</div>
             <ul>
                 <li><strong>Relevant Coursework:</strong> Data Structures & Algorithms I & II, Back-End Programming, Java Frameworks, Data Management - Applications, Version Control</li>
                 <li><strong>Capstone Project: AI-Driven Predictive Modeling (Challenge Rating Predictor)</strong>
